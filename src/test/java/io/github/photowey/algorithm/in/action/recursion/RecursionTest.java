@@ -18,6 +18,8 @@ package io.github.photowey.algorithm.in.action.recursion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Stack;
+
 /**
  * {@code RecursionTest}
  *
@@ -45,6 +47,16 @@ class RecursionTest {
         Assertions.assertEquals(1, this.tailRecur(1, 0));
         Assertions.assertEquals(55, this.tailRecur(10, 0));
         Assertions.assertEquals(5050, this.tailRecur(100, 0));
+    }
+
+    @Test
+    void testForLoopRecur() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> this.forLoopRecur(-1));
+
+        Assertions.assertEquals(0, this.forLoopRecur(0));
+        Assertions.assertEquals(1, this.forLoopRecur(1));
+        Assertions.assertEquals(55, this.forLoopRecur(10));
+        Assertions.assertEquals(5050, this.forLoopRecur(100));
     }
 
     // ----------------------------------------------------------------
@@ -92,5 +104,27 @@ class RecursionTest {
         }
 
         return this.tailRecur(n - 1, res + n);
+    }
+
+    // ----------------------------------------------------------------
+
+    private int forLoopRecur(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("N can't be less than 0");
+        }
+
+        Stack<Integer> stack = new Stack<>();
+
+        for (int i = n; i > 0; i--) {
+            stack.push(i);
+        }
+
+        int res = 0;
+        while (!stack.isEmpty()) {
+            res += stack.pop();
+        }
+
+        // res = 1 + 2 + 3 + ... + n
+        return res;
     }
 }
