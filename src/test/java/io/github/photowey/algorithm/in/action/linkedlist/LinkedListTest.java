@@ -56,6 +56,7 @@ public class LinkedListTest {
     @Test
     void testInsert() {
         Node root = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5)))));
+
         Node p = new Node(6);
         LinkedList.insert(root, p);
 
@@ -66,9 +67,29 @@ public class LinkedListTest {
     @Test
     void testRemove() {
         Node root = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5)))));
+
         LinkedList.remove(root);
 
         String linkedList = Printer.printLinkedList(root);
         Assertions.assertEquals("1 -> 3 -> 4 -> 5", linkedList);
+    }
+
+    @Test
+    void testAccess() {
+        Node root = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5)))));
+
+        Node target = LinkedList.access(root, 3);
+
+        String linkedList = Printer.printLinkedList(target);
+        Assertions.assertEquals("4 -> 5", linkedList);
+    }
+
+    @Test
+    void testFind() {
+        Node root = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5)))));
+
+        int index = LinkedList.find(root, 3);
+
+        Assertions.assertEquals(2, index);
     }
 }

@@ -13,18 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.photowey.algorithm.in.action;
+package io.github.photowey.algorithm.in.action.linkedlist;
 
 /**
- * {@code App}
+ * {@code CircularLinkedList}
  *
  * @author photowey
  * @version 1.0.0
- * @since 2024/06/06
+ * @since 2024/06/23
  */
-public class App {
-
-    public static void main(String[] args) {
-        System.out.println("Hello, Algorithm!");
-    }
-}
+public class CircularLinkedList {}

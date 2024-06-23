@@ -61,6 +61,36 @@ public final class LinkedList {
 
     // ----------------------------------------------------------------
 
+    public static Node access(Node root, int index) {
+        for (int i = 0; i < index; i++) {
+            if (root == null) {
+                return null;
+            }
+
+            root = root.next();
+        }
+
+        return root;
+    }
+
+    // ----------------------------------------------------------------
+
+    public static int find(Node root, int target) {
+        int index = 0;
+
+        while (root != null) {
+            if (root.value() == target) {
+                return index;
+            }
+            root = root.next();
+            index++;
+        }
+
+        return -1;
+    }
+
+    // ----------------------------------------------------------------
+
     private static void checkNPE(Node root, String message) {
         if (null == root) {
             throw new NullPointerException(message);

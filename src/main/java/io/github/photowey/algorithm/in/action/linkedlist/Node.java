@@ -29,19 +29,38 @@ public class Node implements Serializable {
     private static final long serialVersionUID = 6859236789513718452L;
 
     private int value;
+    private Node prev;
     private Node next;
+
+    // ----------------------------------------------------------------
 
     public Node(int value) {
         this.value = value;
     }
+
+    // ----------------------------------------------------------------
 
     public Node(int value, Node next) {
         this.value = value;
         this.next = next;
     }
 
+    public Node(int value, Node prev, Node next) {
+        this.value = value;
+        this.prev = prev;
+        this.next = next;
+    }
+
+    // ----------------------------------------------------------------
+
     public Node(int value, int next) {
         this.value = value;
+        this.next = new Node(next);
+    }
+
+    public Node(int value, int prev, int next) {
+        this.value = value;
+        this.prev = new Node(prev);
         this.next = new Node(next);
     }
 
@@ -49,6 +68,10 @@ public class Node implements Serializable {
 
     public int value() {
         return value;
+    }
+
+    public Node prev() {
+        return prev;
     }
 
     public Node next() {
@@ -59,6 +82,12 @@ public class Node implements Serializable {
 
     public Node value(int value) {
         this.value = value;
+
+        return this;
+    }
+
+    public Node prev(Node prev) {
+        this.prev = prev;
 
         return this;
     }
