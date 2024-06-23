@@ -122,7 +122,7 @@ class ArrayTest {
     void testTraverse3() {
         int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         Array.traverse3(nums, (num) -> {
-            System.out.println("Num:" + num);
+            // System.out.println("Num:" + num);
         });
     }
 

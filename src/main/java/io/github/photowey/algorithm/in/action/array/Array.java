@@ -25,7 +25,11 @@ import java.util.function.Consumer;
  * @version 1.0.0
  * @since 2024/06/23
  */
-public class Array {
+public final class Array {
+
+    private Array() {}
+
+    // ----------------------------------------------------------------
 
     public static int randomAccess(int[] nums) {
         int randomIndex = ThreadLocalRandom.current().nextInt(0, nums.length);
@@ -39,6 +43,8 @@ public class Array {
         return nums[index];
     }
 
+    // ----------------------------------------------------------------
+
     public static void insert(int[] nums, int num, int index) {
         if (index < 0 || index >= nums.length) {
             throw new IndexOutOfBoundsException("Invalid index:" + index);
@@ -51,6 +57,8 @@ public class Array {
         nums[index] = num;
     }
 
+    // ----------------------------------------------------------------
+
     public static void remove(int[] nums, int index) {
         if (index < 0 || index >= nums.length) {
             throw new IndexOutOfBoundsException("Invalid index:" + index);
@@ -61,31 +69,51 @@ public class Array {
         }
     }
 
+    // ----------------------------------------------------------------
+
     public static void traverse(int[] nums) {
+        traverse(nums, false);
+    }
+
+    public static void traverse(int[] nums, boolean printEnabled) {
         int count = 0;
 
         for (int i = 0; i < nums.length; i++) {
             count += nums[i];
         }
 
-        System.out.println("Nums count:" + count);
+        if (printEnabled) {
+            System.out.println("Nums count:" + count);
+        }
     }
 
+    // ----------------------------------------------------------------
+
     public static void traverse2(int[] nums) {
+        traverse2(nums, false);
+    }
+
+    public static void traverse2(int[] nums, boolean printEnabled) {
         int count = 0;
 
         for (int num : nums) {
             count += num;
         }
 
-        System.out.println("Nums count:" + count);
+        if (printEnabled) {
+            System.out.println("Nums count:" + count);
+        }
     }
+
+    // ----------------------------------------------------------------
 
     public static void traverse3(int[] nums, Consumer<Integer> fx) {
         for (int num : nums) {
             fx.accept(num);
         }
     }
+
+    // ----------------------------------------------------------------
 
     public static int find(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
@@ -96,6 +124,8 @@ public class Array {
 
         return -1;
     }
+
+    // ----------------------------------------------------------------
 
     public static int[] extend(int[] nums, int enlarge) {
         int[] res = new int[nums.length + enlarge];
