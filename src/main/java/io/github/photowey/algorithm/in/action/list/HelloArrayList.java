@@ -29,7 +29,7 @@ public class HelloArrayList implements Serializable {
 
     private static final long serialVersionUID = 2799332671895008356L;
 
-    private int[] array;
+    private int[] haystack;
     private int capacity;
     private int size;
     private final int extendFactor;
@@ -41,7 +41,7 @@ public class HelloArrayList implements Serializable {
     }
 
     public HelloArrayList(int capacity) {
-        this.array = new int[capacity];
+        this.haystack = new int[capacity];
         this.capacity = capacity;
         this.size = 0;
         this.extendFactor = 2;
@@ -64,7 +64,7 @@ public class HelloArrayList implements Serializable {
             this.extendCapacity();
         }
 
-        this.array[size] = value;
+        this.haystack[size] = value;
         this.size++;
     }
 
@@ -75,7 +75,7 @@ public class HelloArrayList implements Serializable {
             throw new IndexOutOfBoundsException("Invalid index:" + index);
         }
 
-        return this.array[index];
+        return this.haystack[index];
     }
 
     // ----------------------------------------------------------------
@@ -85,7 +85,7 @@ public class HelloArrayList implements Serializable {
             throw new IndexOutOfBoundsException("Invalid index:" + index);
         }
 
-        this.array[index] = value;
+        this.haystack[index] = value;
     }
 
     // ----------------------------------------------------------------
@@ -101,10 +101,10 @@ public class HelloArrayList implements Serializable {
 
         for (int i = this.size - 1; i >= index; i--) {
             // i -> i + 1
-            this.array[i + 1] = this.array[i];
+            this.haystack[i + 1] = this.haystack[i];
         }
 
-        this.array[index] = value;
+        this.haystack[index] = value;
         this.size++;
     }
 
@@ -115,11 +115,11 @@ public class HelloArrayList implements Serializable {
             throw new IndexOutOfBoundsException("Invalid index:" + index);
         }
 
-        int target = this.array[index];
+        int target = this.haystack[index];
 
         for (int i = index; i < this.size - 1; i++) {
             // i <- i + 1
-            this.array[i] = this.array[i + 1];
+            this.haystack[i] = this.haystack[i + 1];
         }
 
         this.size--;
@@ -149,7 +149,7 @@ public class HelloArrayList implements Serializable {
     // ----------------------------------------------------------------
 
     private void extendCapacity() {
-        this.array = Arrays.copyOf(this.array, this.capacity() * this.extendFactor);
-        this.capacity = this.array.length;
+        this.haystack = Arrays.copyOf(this.haystack, this.capacity() * this.extendFactor);
+        this.capacity = this.haystack.length;
     }
 }

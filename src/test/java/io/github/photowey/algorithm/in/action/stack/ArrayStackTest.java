@@ -30,6 +30,7 @@ class ArrayStackTest {
     @Test
     void testInit() {
         ArrayStack stack = new ArrayStack();
+
         Assertions.assertEquals(0, stack.size());
         Assertions.assertTrue(stack.isEmpty());
         Assertions.assertFalse(stack.isNotEmpty());
