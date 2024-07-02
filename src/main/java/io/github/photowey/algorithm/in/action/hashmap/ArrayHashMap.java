@@ -102,15 +102,15 @@ public class ArrayHashMap extends AbstractMap {
     // ----------------------------------------------------------------
 
     public List<Integer> keyList() {
-        List<Integer> keyes = new ArrayList<>();
+        List<Integer> keys = new ArrayList<>();
 
         for (Entry bucket : this.buckets) {
             if (this.isNotEmpty(bucket)) {
-                keyes.add(bucket.key());
+                keys.add(bucket.key());
             }
         }
 
-        return keyes;
+        return keys;
     }
 
     // ----------------------------------------------------------------
