@@ -28,7 +28,7 @@ import java.util.Objects;
  */
 public class ArrayHashMap extends AbstractMap {
 
-    private final static int INIT_BUCKETS_SIZE = 1 << 7;
+    private final static int INIT_BUCKETS_SIZE = 100;
     private final List<Entry> buckets;
     private int size;
 
@@ -138,7 +138,7 @@ public class ArrayHashMap extends AbstractMap {
     // ----------------------------------------------------------------
 
     private int hash(int key) {
-        int index = key % 100;
+        int index = key % INIT_BUCKETS_SIZE;
         // ...
 
         return index;
